@@ -1,0 +1,16 @@
+<div class="transactions">
+  <div class="incomes">
+    @for(income of incomes(); track income.description){
+    <div class="transaction">
+      <p>{{ income.amount }}</p>
+      <p>{{ income.description }}</p>
+    </div>
+    }
+  </div>
+  <div class="expenses">
+    <div *ngFor="let expense of expenses()" class="transaction">
+      <p>{{ expense.amount }}</p>
+      <p>{{ expense.description }}</p>
+    </div>
+  </div>
+</div>

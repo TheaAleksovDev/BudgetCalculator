@@ -1,0 +1,6 @@
+<h2>{{ balance() }}</h2>
+<div class="inputs">
+  <input type="text" placeholder="amount" [(ngModel)]="amount" />
+  <input type="text" placeholder="description" [(ngModel)]="description" />
+  <button class="add" (click)="addTransaction()">add</button>
+</div>
