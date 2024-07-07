@@ -34,8 +34,6 @@ export class BalanceService {
       { amount: amount, description: description },
     ]);
     this.balance.update((balance) => balance + amount);
-    this.saveBalance();
-    this.saveTransactions();
   };
 
   addExpense = (amount: number, description: string) => {
@@ -44,8 +42,6 @@ export class BalanceService {
       { amount: amount, description: description },
     ]);
     this.balance.update((balance) => balance + amount);
-    this.saveBalance();
-    this.saveTransactions();
   };
 
   saveBalance = () => {
@@ -86,15 +82,34 @@ export class BalanceService {
 
   addTransaction = (amount: string, description: string) => {
     const amountValue = +amount;
-    console.log(amountValue);
-    console.log(description);
-
     if (amountValue && description) {
       if (amountValue < 0) {
         this.addExpense(amountValue, description);
       } else {
         this.addIncome(amountValue, description);
       }
+      this.saveBalance();
+      this.saveTransactions();
+    }
+  };
+  deleteTransaction = (selectedTransaction: Transaction) => {
+    const amountValue = +selectedTransaction.amount;
+    if (selectedTransaction) {
+      if (amountValue < 0) {
+        this.balance.update((balance) => balance - amountValue);
+        const updatedExpenses = this.expenses().filter(
+          (transaction) => transaction !== selectedTransaction
+        );
+        this.expenses.set(updatedExpenses);
+      } else {
+        this.balance.update((balance) => balance - amountValue);
+        const updatedIncomes = this.incomes().filter(
+          (transaction) => transaction !== selectedTransaction
+        );
+        this.incomes.set(updatedIncomes);
+      }
+      this.saveBalance();
+      this.saveTransactions();
     }
   };
 }

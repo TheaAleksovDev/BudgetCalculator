@@ -1,6 +1,11 @@
-<h2>{{ balance() }}</h2>
-<div class="inputs">
+<h2 class="balance">balance: {{ balance() }}</h2>
+<div class="inputs" *appShowByRole="role()">
   <input type="text" placeholder="amount" [(ngModel)]="amount" />
-  <input type="text" placeholder="description" [(ngModel)]="description" />
+  <input
+    type="text"
+    placeholder="description"
+    class="desc"
+    [(ngModel)]="description"
+  />
   <button class="add" (click)="addTransaction()">add</button>
 </div>
