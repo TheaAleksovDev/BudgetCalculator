@@ -43,8 +43,8 @@ export class BalanceService {
     } else {
       let convertedValue = this.currencyConvertPipe.transform(
         amount,
-        this.balance().currency,
-        currency
+        currency,
+        this.balance().currency
       );
 
       if (convertedValue) {
@@ -126,6 +126,7 @@ export class BalanceService {
       this.saveTransactions();
     }
   };
+
   deleteTransaction = (selectedTransaction: Transaction) => {
     const amountValue = +selectedTransaction.amount;
     if (selectedTransaction) {

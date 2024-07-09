@@ -11,14 +11,15 @@ export class CurrencyConvertPipe implements PipeTransform {
     if (!value || isNaN(value)) {
       return null;
     }
+    // console.log(value, currency, convertToCurrency);
     if (currency === convertToCurrency) {
-      return value.toFixed(0);
-    } else if (convertToCurrency === 'BGN' && currency === 'USD') {
-      return (value * 1.75).toFixed(0);
-    } else if (convertToCurrency === 'USD' && currency === 'BGN') {
-      return (value * 0.57).toFixed(0);
+      return value.toFixed(2);
+    } else if (currency === 'USD' && convertToCurrency === 'BGN') {
+      return (value * 1.75).toFixed(2);
+    } else if (currency === 'BGN' && convertToCurrency === 'USD') {
+      return (value * 0.57).toFixed(2);
     } else {
-      return value.toFixed(0);
+      return value.toFixed(2);
     }
   }
 }

@@ -1,8 +1,11 @@
 <h2 class="balance">
   balance:
-  {{ (balance().amount | convert : currency() : balance().currency) || "0" }}
+  {{ (balance().amount | convert : balance().currency : currency()) || "0" }}
   {{ currency() }}
 </h2>
+<p class="info" *appShowByRole="role()">
+  *Balance might vary due to the currency exchange rate and mixed values*
+</p>
 <div class="inputs" *appShowByRole="role()">
   <input
     type="text"
