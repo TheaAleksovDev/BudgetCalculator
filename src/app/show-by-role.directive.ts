@@ -19,7 +19,6 @@ export class AppShowByRoleDirective {
 
   constructor() {
     effect(() => {
-      console.log(this.role());
       switch (this.role()) {
         case 'admin':
           this.viewContainerRef.createEmbeddedView(this.templateRef);

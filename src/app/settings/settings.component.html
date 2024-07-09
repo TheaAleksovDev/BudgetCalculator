@@ -1,0 +1,16 @@
+<div class="choose">
+  <button (click)="setCurrency('BGN')" [class.selected]="currency() === 'BGN'">
+    BGN
+  </button>
+  <button (click)="setCurrency('USD')" [class.selected]="currency() === 'USD'">
+    USD
+  </button>
+</div>
+<div class="choose">
+  <button (click)="setRole('admin')" [class.selected]="role() === 'admin'">
+    Admin
+  </button>
+  <button (click)="setRole('guest')" [class.selected]="role() === 'guest'">
+    Guest
+  </button>
+</div>

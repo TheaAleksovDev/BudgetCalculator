@@ -1,7 +1,5 @@
 import {
-  AfterViewInit,
   Directive,
-  effect,
   ElementRef,
   HostListener,
   inject,
@@ -50,7 +48,6 @@ export class HighlightByAmount implements OnInit {
 
   @HostListener('mouseenter') onMouseEnter() {
     this.updateBorderColor();
-    console.log(this.borderColor());
     this.elementRef.nativeElement.style.backgroundColor = this.borderColor();
     this.elementRef.nativeElement.style.color = 'white';
   }

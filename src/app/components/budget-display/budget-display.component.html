@@ -1,9 +1,12 @@
 <div class="transactions">
   <div class="incomes">
-    @for(income of incomes(); track income.description){
+    @for(income of incomes(); track income){
     <div class="transaction income" [appHighlightByAmount]="income.amount">
       <div>
-        <p class="income-amount">+{{ income.amount }}</p>
+        <p class="income-amount">
+          +{{ income.amount | convert : currency() : income.currency }}
+          {{ currency() }}
+        </p>
         <p>{{ income.description }}</p>
       </div>
       <button *appShowByRole="role()" (click)="deleteTransaction(income)">
@@ -19,7 +22,10 @@
       [appHighlightByAmount]="expense.amount"
     >
       <div>
-        <p class="expense-amount">{{ expense.amount }}</p>
+        <p class="expense-amount">
+          {{ expense.amount | convert : currency() : expense.currency }}
+          {{ currency() }}
+        </p>
         <p>{{ expense.description }}</p>
       </div>
       <button *appShowByRole="role()" (click)="deleteTransaction(expense)">

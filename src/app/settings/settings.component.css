@@ -1,0 +1,27 @@
+button {
+  padding: 10px 15px;
+  box-sizing: border-box;
+  border: none;
+  color: #45a049;
+  font-weight: 600;
+}
+button:hover {
+  cursor: pointer;
+}
+.choose {
+  border-radius: 20px;
+  overflow: hidden;
+  width: fit-content;
+  border: 2px solid #45a049;
+}
+.selected {
+  background-color: #45a049;
+  color: white;
+}
+:host {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
