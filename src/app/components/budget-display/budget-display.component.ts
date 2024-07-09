@@ -2,14 +2,14 @@ import { Component, effect, input, WritableSignal } from '@angular/core';
 import { inject, signal } from '@angular/core';
 import { BalanceService } from '../budget-inputs/balance.service';
 import { CommonModule } from '@angular/common';
-import { OnInit } from '@angular/core';
 import { Transaction } from '../budget-inputs/balance.service';
 import { AppShowByRoleDirective } from '../../show-by-role.directive';
 import { Role } from '../../interfaces/role.type';
+import { HighlightByAmount } from '../../highlight-by-amount.directive';
 @Component({
   selector: 'app-budget-display',
   standalone: true,
-  imports: [CommonModule, AppShowByRoleDirective],
+  imports: [CommonModule, AppShowByRoleDirective, HighlightByAmount],
   templateUrl: './budget-display.component.html',
   styleUrl: './budget-display.component.css',
 })
