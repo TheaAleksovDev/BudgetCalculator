@@ -1,6 +1,11 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { SettingsService } from './settings.service';
-import { Currency, Role } from '../models/budget-calculator.model';
+import {
+  CURRENCIES_LIST,
+  ROLES_LIST,
+  Currency,
+  Role,
+} from '../models/budget-calculator.model';
 
 @Component({
   selector: 'app-settings',
@@ -11,18 +16,20 @@ import { Currency, Role } from '../models/budget-calculator.model';
 })
 export class SettingsComponent {
   private settingsService = inject(SettingsService);
-  role = signal<Role>('admin');
-  currency = signal<Currency>('BGN');
 
-  constructor() {
-    effect(
-      () => {
-        this.role.set(this.settingsService.getSelectedRole());
-        this.currency.set(this.settingsService.getSelectedCurrency());
-      },
-      { allowSignalWrites: true }
-    );
-  }
+  //currencies
+  allCurrencies = inject(CURRENCIES_LIST);
+
+  currency = computed(() => {
+    return this.settingsService.getSelectedCurrency();
+  });
+
+  //roles
+  allRoles = inject(ROLES_LIST);
+
+  role = computed(() => {
+    return this.settingsService.getSelectedRole();
+  });
 
   setCurrency = (currency: Currency) => {
     this.settingsService.setSelectedCurrency(currency);

@@ -1,16 +1,22 @@
 <div class="choose">
-  <button (click)="setCurrency('BGN')" [class.selected]="currency() === 'BGN'">
-    BGN
+  @for(element of allCurrencies; track element.currency){
+  <button
+    (click)="setCurrency(element.currency)"
+    [class.selected]="currency() === element.currency"
+    [disabled]="!element.isAvailable && true"
+  >
+    {{ element.currency.toUpperCase() }} {{ !element.isAvailable ? "X" : "" }}
   </button>
-  <button (click)="setCurrency('USD')" [class.selected]="currency() === 'USD'">
-    USD
-  </button>
+  }
 </div>
 <div class="choose">
-  <button (click)="setRole('admin')" [class.selected]="role() === 'admin'">
-    Admin
+  @for(element of allRoles; track element.role){
+  <button
+    (click)="setRole(element.role)"
+    [class.selected]="role() === element.role"
+    [disabled]="!element.isAvailable && true"
+  >
+    {{ element.role.toUpperCase() }} {{ !element.isAvailable ? "X" : "" }}
   </button>
-  <button (click)="setRole('guest')" [class.selected]="role() === 'guest'">
-    Guest
-  </button>
+  }
 </div>

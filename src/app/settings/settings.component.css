@@ -3,6 +3,8 @@ button {
   box-sizing: border-box;
   border: none;
   color: #45a049;
+  /* background-color: #99e89d; */
+
   font-weight: 600;
 }
 button:hover {
@@ -24,4 +26,9 @@ button:hover {
   align-items: center;
   justify-content: center;
   gap: 20px;
+}
+:disabled {
+  opacity: 0.7;
+  background-color: lightgrey;
+  color: darkgray;
 }
