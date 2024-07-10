@@ -6,7 +6,7 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import { Role } from './interfaces/role.type';
+import { Role } from './models/budget-calculator.model';
 
 @Directive({
   selector: '[appShowByRole]',

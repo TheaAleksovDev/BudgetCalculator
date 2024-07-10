@@ -1,14 +1,7 @@
-import { inject, Injectable } from '@angular/core';
-import { signal } from '@angular/core';
-import { WritableSignal } from '@angular/core';
-import { Currency } from '../../interfaces/currency.type';
-import { Balance } from '../../interfaces/balance.interface';
+import { WritableSignal, inject, Injectable, signal } from '@angular/core';
+import { Currency, Balance } from '../../models/budget-calculator.model';
 import { CurrencyConvertPipe } from '../../currency.pipe';
-export interface Transaction {
-  amount: number;
-  currency: Currency;
-  description: string;
-}
+import { Transaction } from '../../models/budget-calculator.model';
 
 @Injectable({ providedIn: 'root' })
 export class BalanceService {

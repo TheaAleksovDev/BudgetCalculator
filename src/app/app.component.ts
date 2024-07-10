@@ -2,9 +2,9 @@ import { Component, effect, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { BudgetInputsComponent } from './components/budget-inputs/budget-inputs.component';
 import { BudgetDisplayComponent } from './components/budget-display/budget-display.component';
-import { Role } from './interfaces/role.type';
 import { SettingsComponent } from './settings/settings.component';
 import { SettingsService } from './settings/settings.service';
+import { Role } from './models/budget-calculator.model';
 
 @Component({
   selector: 'app-root',

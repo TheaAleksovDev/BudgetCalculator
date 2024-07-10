@@ -1,7 +1,6 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { SettingsService } from './settings.service';
-import { Currency } from '../interfaces/currency.type';
-import { Role } from '../interfaces/role.type';
+import { Currency, Role } from '../models/budget-calculator.model';
 
 @Component({
   selector: 'app-settings',

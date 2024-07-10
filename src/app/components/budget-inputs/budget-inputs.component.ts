@@ -2,11 +2,9 @@ import { Component, effect, inject, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BalanceService } from './balance.service';
 import { AppShowByRoleDirective } from '../../show-by-role.directive';
-import { Role } from '../../interfaces/role.type';
 import { SettingsService } from '../../settings/settings.service';
 import { CurrencyConvertPipe } from '../../currency.pipe';
-import { Currency } from '../../interfaces/currency.type';
-import { Balance } from '../../interfaces/balance.interface';
+import { Currency, Balance, Role } from '../../models/budget-calculator.model';
 
 @Component({
   selector: 'app-budget-inputs',

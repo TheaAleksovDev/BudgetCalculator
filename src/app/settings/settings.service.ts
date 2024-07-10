@@ -1,6 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { Currency } from '../interfaces/currency.type';
-import { Role } from '../interfaces/role.type';
+import { Currency, Role } from '../models/budget-calculator.model';
 @Injectable({
   providedIn: 'root',
 })

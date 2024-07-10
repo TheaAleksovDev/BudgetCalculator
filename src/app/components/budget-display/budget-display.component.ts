@@ -1,14 +1,22 @@
-import { Component, effect, input, WritableSignal } from '@angular/core';
-import { inject, signal } from '@angular/core';
+import {
+  Component,
+  effect,
+  input,
+  WritableSignal,
+  inject,
+  signal,
+} from '@angular/core';
 import { BalanceService } from '../budget-inputs/balance.service';
 import { CommonModule } from '@angular/common';
-import { Transaction } from '../budget-inputs/balance.service';
 import { AppShowByRoleDirective } from '../../show-by-role.directive';
-import { Role } from '../../interfaces/role.type';
 import { HighlightByAmount } from '../../highlight-by-amount.directive';
 import { CurrencyConvertPipe } from '../../currency.pipe';
 import { SettingsService } from '../../settings/settings.service';
-import { Currency } from '../../interfaces/currency.type';
+import {
+  Currency,
+  Role,
+  Transaction,
+} from '../../models/budget-calculator.model';
 
 @Component({
   selector: 'app-budget-display',

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform, Injectable } from '@angular/core';
-import { Currency } from './interfaces/currency.type';
+import { Currency } from './models/budget-calculator.model';
 
 @Injectable({ providedIn: 'root' })
 @Pipe({
