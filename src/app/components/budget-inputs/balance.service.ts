@@ -2,6 +2,7 @@ import { WritableSignal, inject, Injectable, signal } from '@angular/core';
 import { Currency, Balance } from '../../models/budget-calculator.model';
 import { CurrencyConvertPipe } from '../../currency.pipe';
 import { Transaction } from '../../models/budget-calculator.model';
+import { nanoid } from 'nanoid';
 
 @Injectable({ providedIn: 'root' })
 export class BalanceService {
@@ -51,18 +52,30 @@ export class BalanceService {
   }
 
   addIncome = (amount: number, currency: Currency, description: string) => {
+    const id = nanoid();
     this.incomes.update((incomes) => [
       ...incomes,
-      { amount: amount, currency: currency, description: description },
+      {
+        amount: amount,
+        currency: currency,
+        description: description,
+        id: id,
+      },
     ]);
 
     this.updateBalance(currency, amount, '+');
   };
 
   addExpense = (amount: number, currency: Currency, description: string) => {
+    const id = nanoid();
     this.expenses.update((incomes) => [
       ...incomes,
-      { amount: amount, currency: currency, description: description },
+      {
+        amount: amount,
+        currency: currency,
+        description: description,
+        id: id,
+      },
     ]);
     this.updateBalance(currency, amount, '+');
   };

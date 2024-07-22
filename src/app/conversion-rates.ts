@@ -1,0 +1,2 @@
+export const USD_TO_BGN_CONVERSATION_RATE = 1.75;
+export const BGN_TO_USD_CONVERSION_RATE = 0.57;

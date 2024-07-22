@@ -5,7 +5,7 @@
     [class.selected]="currency() === element.currency"
     [disabled]="!element.isAvailable && true"
   >
-    {{ element.currency.toUpperCase() }} {{ !element.isAvailable ? "X" : "" }}
+    {{ element.currency.toUpperCase() }} {{ element.isAvailable ? "" : "X" }}
   </button>
   }
 </div>
@@ -16,7 +16,7 @@
     [class.selected]="role() === element.role"
     [disabled]="!element.isAvailable && true"
   >
-    {{ element.role.toUpperCase() }} {{ !element.isAvailable ? "X" : "" }}
+    {{ element.role.toUpperCase() }} {{ element.isAvailable ? "" : "X" }}
   </button>
   }
 </div>

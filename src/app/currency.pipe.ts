@@ -1,5 +1,9 @@
 import { Pipe, PipeTransform, Injectable } from '@angular/core';
 import { Currency } from './models/budget-calculator.model';
+import {
+  USD_TO_BGN_CONVERSATION_RATE,
+  BGN_TO_USD_CONVERSION_RATE,
+} from './conversion-rates';
 
 @Injectable({ providedIn: 'root' })
 @Pipe({
@@ -11,13 +15,12 @@ export class CurrencyConvertPipe implements PipeTransform {
     if (!value || isNaN(value)) {
       return null;
     }
-    // console.log(value, currency, convertToCurrency);
     if (currency === convertToCurrency) {
       return value.toFixed(2);
     } else if (currency === 'USD' && convertToCurrency === 'BGN') {
-      return (value * 1.75).toFixed(2);
+      return (value * USD_TO_BGN_CONVERSATION_RATE).toFixed(2);
     } else if (currency === 'BGN' && convertToCurrency === 'USD') {
-      return (value * 0.57).toFixed(2);
+      return (value * BGN_TO_USD_CONVERSION_RATE).toFixed(2);
     } else {
       return value.toFixed(2);
     }

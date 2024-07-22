@@ -1,6 +1,6 @@
 <div class="transactions">
   <div class="incomes">
-    @for(income of incomes(); track income){
+    @for(income of incomes(); track income.id){
     <div class="transaction income" [appHighlightByAmount]="income.amount">
       <div>
         <p class="income-amount">

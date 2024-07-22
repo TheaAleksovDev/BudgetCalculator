@@ -13,6 +13,7 @@ export interface Transaction {
   amount: number;
   currency: Currency;
   description: string;
+  id: string;
 }
 
 interface CurrencyObject {
