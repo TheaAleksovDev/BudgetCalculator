@@ -28,17 +28,17 @@ export class HighlightByAmount implements OnInit {
 
   updateBorderColor = () => {
     if (this.amount() > 0) {
-      if (this.amount() < 500) {
+      if (this.amount() <= 500) {
         this.borderColor.set('#5bff63');
-      } else if (this.amount() > 500 && this.amount() < 1000) {
+      } else if (this.amount() > 500 && this.amount() <= 1000) {
         this.borderColor.set('#45a049');
-      } else {
+      } else if (this.amount() > 1000) {
         this.borderColor.set('#295f2c');
       }
     } else {
-      if (this.amount() > -500) {
+      if (this.amount() >= -500) {
         this.borderColor.set('#d70000');
-      } else if (this.amount() < -500 && this.amount() > -1000) {
+      } else if (this.amount() < -500 && this.amount() >= -1000) {
         this.borderColor.set('#b80000');
       } else if (this.amount() < -1000) {
         this.borderColor.set('#8b0000');
