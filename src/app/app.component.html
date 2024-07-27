@@ -1,5 +1,15 @@
 <div class="app">
-  <app-settings />
-  <app-budget-inputs [role]="role()"></app-budget-inputs>
-  <app-budget-display [role]="role()"></app-budget-display>
+  @if(USD_TO_BGN_CONVERSION_RATE() &&
+  BGN_TO_USD_CONVERSION_RATE()){<app-settings />
+  <app-budget-inputs
+    [role]="role()"
+    [rates]="[USD_TO_BGN_CONVERSION_RATE(), BGN_TO_USD_CONVERSION_RATE()]"
+  ></app-budget-inputs>
+  <app-budget-display
+    [role]="role()"
+    [rates]="[USD_TO_BGN_CONVERSION_RATE(), BGN_TO_USD_CONVERSION_RATE()]"
+  ></app-budget-display
+  >}@else {
+  <p>Problem with fetching currency rates. Try again later.</p>
+  }
 </div>

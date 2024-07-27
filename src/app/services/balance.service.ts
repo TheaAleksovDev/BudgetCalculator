@@ -1,17 +1,30 @@
 import { WritableSignal, inject, Injectable, signal } from '@angular/core';
-import { Currency, Balance } from '../../models/budget-calculator.model';
-import { CurrencyConvertPipe } from '../../currency.pipe';
-import { Transaction } from '../../models/budget-calculator.model';
+import { Currency, Balance, Rate } from '../models/budget-calculator.model';
+import { CurrencyConvertPipe } from '../currency.pipe';
+import { Transaction } from '../models/budget-calculator.model';
 import { nanoid } from 'nanoid';
+import { ConversionRatesService } from './conversion-rates.service';
 
 @Injectable({ providedIn: 'root' })
 export class BalanceService {
   private currencyConvertPipe = inject(CurrencyConvertPipe);
-
+  private conversionRatesService = inject(ConversionRatesService);
   private balance = signal<Balance>({ amount: 0, currency: 'BGN' });
   private incomes: WritableSignal<Transaction[]> = signal([]);
   private expenses: WritableSignal<Transaction[]> = signal([]);
+  private USD_TO_BGN_CONVERSION_RATE = signal<Rate>(null);
+  private BGN_TO_USD_CONVERSION_RATE = signal<Rate>(null);
+
+  updateUSDtoBGN(newRate: Rate) {
+    this.USD_TO_BGN_CONVERSION_RATE.set(newRate);
+  }
+  updateBGNtoUSD(newRate: Rate) {
+    this.BGN_TO_USD_CONVERSION_RATE.set(newRate);
+  }
+
   constructor() {
+    this.conversionRatesService.updateConversionRates();
+
     this.loadBalance();
     this.loadTransactions();
   }
@@ -38,7 +51,8 @@ export class BalanceService {
       let convertedValue = this.currencyConvertPipe.transform(
         amount,
         currency,
-        this.balance().currency
+        this.balance().currency,
+        [this.USD_TO_BGN_CONVERSION_RATE(), this.BGN_TO_USD_CONVERSION_RATE()]
       );
 
       if (convertedValue) {

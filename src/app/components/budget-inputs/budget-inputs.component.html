@@ -1,6 +1,9 @@
 <h2 class="balance">
   balance:
-  {{ (balance().amount | convert : balance().currency : currency()) || "0" }}
+  {{
+    (rates() && balance().amount
+      | convert : balance().currency : currency() : rates()) || "0"
+  }}
   {{ currency() }}
 </h2>
 <p class="info" *appShowByRole="role()">

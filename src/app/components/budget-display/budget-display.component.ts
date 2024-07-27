@@ -6,7 +6,7 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { BalanceService } from '../budget-inputs/balance.service';
+import { BalanceService } from '../../services/balance.service';
 import { CommonModule } from '@angular/common';
 import { AppShowByRoleDirective } from '../../show-by-role.directive';
 import { HighlightByAmount } from '../../highlight-by-amount.directive';
@@ -14,6 +14,7 @@ import { CurrencyConvertPipe } from '../../currency.pipe';
 import { SettingsService } from '../../settings/settings.service';
 import {
   Currency,
+  Rate,
   Role,
   Transaction,
 } from '../../models/budget-calculator.model';
@@ -32,7 +33,7 @@ import {
 })
 export class BudgetDisplayComponent {
   role = input.required<Role>();
-
+  rates = input.required<Rate[]>();
   private balanceService = inject(BalanceService);
   private settingsService = inject(SettingsService);
 
