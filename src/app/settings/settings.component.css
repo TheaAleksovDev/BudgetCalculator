@@ -3,7 +3,6 @@ button {
   box-sizing: border-box;
   border: none;
   color: #45a049;
-
   font-weight: 600;
 }
 button:hover {

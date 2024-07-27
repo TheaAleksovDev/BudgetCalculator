@@ -56,10 +56,10 @@ export class BalanceService {
     this.incomes.update((incomes) => [
       ...incomes,
       {
-        amount: amount,
-        currency: currency,
-        description: description,
-        id: id,
+        amount,
+        currency,
+        description,
+        id,
       },
     ]);
 
@@ -71,10 +71,10 @@ export class BalanceService {
     this.expenses.update((incomes) => [
       ...incomes,
       {
-        amount: amount,
-        currency: currency,
-        description: description,
-        id: id,
+        amount,
+        currency,
+        description,
+        id,
       },
     ]);
     this.updateBalance(currency, amount, '+');
