@@ -37,3 +37,42 @@ input {
   justify-content: center;
   font-weight: 800;
 }
+.fetching-time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+}
+.fetching-time div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-direction: row;
+}
+.fetching-time div * {
+  height: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border-radius: 20px;
+}
+.fetching-time button {
+  font-weight: 700;
+  width: 70px;
+}
+.fetching-time button:hover {
+  cursor: pointer;
+}
+.change-button {
+  color: #45a049;
+  border: 2px solid #45a049;
+  background-color: white;
+}
+.save-button {
+  color: white;
+  border: none;
+  background-color: #45a049;
+}
