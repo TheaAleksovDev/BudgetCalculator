@@ -1,14 +1,21 @@
 <div class="fetching-time" *appShowByRole="role()">
   <h4>update interval for rates (in milliseconds):</h4>
   <div>
-    <input
-      type="number"
-      placeholder="enter time"
-      value="30000"
-      #intervalInput
-      [(ngModel)]="ratesInterval"
-      [disabled]="intervalInputEnabled() ? false : true"
-    />
+    <div class="interval-input-container">
+      <input
+        type="number"
+        placeholder="enter time"
+        value="30000"
+        #intervalInput
+        [(ngModel)]="ratesInterval"
+        [disabled]="intervalInputEnabled() ? false : true"
+        [class]="intervalInputError() ? 'error-input' : ''"
+      />
+      @if(intervalInputError()){
+      <p class="error">value must be bigger than 10000ms</p>
+      }
+    </div>
+
     <button
       (click)="onChangeIntervalClick()"
       [class]="intervalInputEnabled() ? 'save-button' : 'change-button'"

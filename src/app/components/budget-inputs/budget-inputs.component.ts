@@ -31,7 +31,7 @@ import { Subscription } from 'rxjs';
   styleUrl: './budget-inputs.component.css',
 })
 export class BudgetInputsComponent implements OnInit, OnDestroy {
-  rates = input.required<Rate[]>();
+  rates = input.required<[Rate, Rate]>();
   role = input.required<Role>();
   private balanceService = inject(BalanceService);
   private settingsService = inject(SettingsService);
@@ -45,12 +45,13 @@ export class BudgetInputsComponent implements OnInit, OnDestroy {
   ratesIntervalSubscription!: Subscription;
   ratesInterval = signal<null | number>(null);
   intervalInputEnabled = signal(false);
+  intervalInputError = signal(false);
   @ViewChild('intervalInput')
   intervalInputElement!: ElementRef<HTMLInputElement>;
 
   ngOnInit(): void {
     this.ratesIntervalSubscription =
-      this.conversionRatesService.ratesInterval.subscribe({
+      this.conversionRatesService.ratesInterval$.subscribe({
         next: (value) => {
           this.ratesInterval.set(value);
         },
@@ -63,6 +64,12 @@ export class BudgetInputsComponent implements OnInit, OnDestroy {
 
   onChangeIntervalClick() {
     const timeValue = this.ratesInterval();
+    if (timeValue && timeValue < 10000) {
+      this.intervalInputError.set(true);
+      return;
+    }
+
+    this.intervalInputError.set(false);
     if (timeValue !== null) {
       this.conversionRatesService.updateInterval(timeValue);
     }

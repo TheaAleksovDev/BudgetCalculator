@@ -33,7 +33,7 @@ import {
 })
 export class BudgetDisplayComponent {
   role = input.required<Role>();
-  rates = input.required<Rate[]>();
+  rates = input.required<[Rate, Rate]>();
   private balanceService = inject(BalanceService);
   private settingsService = inject(SettingsService);
 

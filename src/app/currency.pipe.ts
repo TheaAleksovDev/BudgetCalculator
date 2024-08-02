@@ -11,7 +11,7 @@ export class CurrencyConvertPipe implements PipeTransform {
     value: number,
     currency: Currency,
     convertToCurrency: Currency,
-    rates: Rate[]
+    rates: [Rate, Rate]
   ) {
     const USD_TO_BGN_CONVERSION_RATE = rates[0];
     const BGN_TO_USD_CONVERSION_RATE = rates[1];

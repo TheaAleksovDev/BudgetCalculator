@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject, OnDestroy, OnInit } from '@angular/core';
+import { Injectable, inject, OnDestroy } from '@angular/core';
 import {
   BehaviorSubject,
   forkJoin,
@@ -16,36 +16,37 @@ import {
 export class ConversionRatesService implements OnDestroy {
   USD_TO_BGN_CONVERSATION_RATE$ = new BehaviorSubject<number | null>(null);
   BGN_TO_USD_CONVERSION_RATE$ = new BehaviorSubject<number | null>(null);
-  ratesInterval = new BehaviorSubject<number | null>(null);
+  ratesInterval$ = new BehaviorSubject<number | null>(null);
 
   private httpClient = inject(HttpClient);
   private conversionRatesSubscription!: Subscription;
+  private defaultInterval = 300000;
 
   getSavedInterval() {
     const savedRatesInterval = localStorage.getItem('ratesInterval');
     if (savedRatesInterval !== null) {
-      this.ratesInterval.next(+savedRatesInterval);
+      this.ratesInterval$.next(+savedRatesInterval);
     } else {
-      this.ratesInterval.next(300000);
+      this.ratesInterval$.next(this.defaultInterval);
     }
   }
 
   updateInterval(newInterval: number) {
-    this.ratesInterval.next(newInterval);
+    this.ratesInterval$.next(newInterval);
     this.saveInterval();
     this.conversionRatesSubscription.unsubscribe();
     this.updateConversionRates();
   }
 
   saveInterval() {
-    localStorage.setItem('ratesInterval', String(this.ratesInterval.value));
+    localStorage.setItem('ratesInterval', String(this.ratesInterval$.value));
   }
 
   updateConversionRates() {
     this.getSavedInterval();
 
-    if (this.ratesInterval.value !== null) {
-      this.conversionRatesSubscription = interval(this.ratesInterval.value)
+    if (this.ratesInterval$.value !== null) {
+      this.conversionRatesSubscription = interval(this.ratesInterval$.value)
         .pipe(
           startWith(0),
           switchMap(() => this.fetchConversionRates())
