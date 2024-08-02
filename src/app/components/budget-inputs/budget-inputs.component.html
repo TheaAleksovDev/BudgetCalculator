@@ -1,0 +1,25 @@
+<h2 class="balance">
+  balance:
+  {{ (balance().amount | convert : balance().currency : currency()) || "0" }}
+  {{ currency() }}
+</h2>
+<p class="info" *appShowByRole="role()">
+  *Balance might vary due to the currency exchange rate and mixed values*
+</p>
+<div class="inputs" *appShowByRole="role()">
+  <input
+    type="number"
+    [placeholder]="'amount in ' + this.currency()"
+    [(ngModel)]="amount"
+  />
+  <input
+    type="text"
+    placeholder="description"
+    class="desc"
+    [(ngModel)]="description"
+  />
+  <button class="add" (click)="addTransaction()">add</button>
+</div>
+<p class="info" *appShowByRole="role()">
+  for adding an expense (negative amount), add "-" before your amount
+</p>

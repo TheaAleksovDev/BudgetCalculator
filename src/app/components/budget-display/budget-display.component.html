@@ -1,0 +1,36 @@
+<div class="transactions">
+  <div class="incomes">
+    @for(income of incomes(); track income.id){
+    <div class="transaction income" [appHighlightByAmount]="income.amount">
+      <div>
+        <p class="income-amount">
+          +{{ income.amount | convert : income.currency : currency() }}
+          {{ currency() }}
+        </p>
+        <p>{{ income.description }}</p>
+      </div>
+      <button *appShowByRole="role()" (click)="deleteTransaction(income)">
+        X
+      </button>
+    </div>
+    }
+  </div>
+  <div class="expenses">
+    <div
+      *ngFor="let expense of expenses()"
+      class="transaction expense"
+      [appHighlightByAmount]="expense.amount"
+    >
+      <div>
+        <p class="expense-amount">
+          {{ expense.amount | convert : expense.currency : currency() }}
+          {{ currency() }}
+        </p>
+        <p>{{ expense.description }}</p>
+      </div>
+      <button *appShowByRole="role()" (click)="deleteTransaction(expense)">
+        X
+      </button>
+    </div>
+  </div>
+</div>

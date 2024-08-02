@@ -1,0 +1,54 @@
+.transactions {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: row;
+  gap: 30px;
+}
+.transaction {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 500px;
+  overflow-x: auto;
+  box-sizing: border-box;
+  padding: 0 10px;
+  border: 3px solid grey;
+
+  border-radius: 20px;
+  gap: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.transaction div {
+  display: inherit;
+  gap: 10px;
+}
+.transaction button {
+  background-color: #a04545;
+  color: white;
+  border: 2px solid white;
+  padding: 3px 6px;
+  transition: 0.25s ease;
+}
+.transaction button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+.income {
+  border-color: #45a049;
+
+  box-sizing: border-box;
+}
+.expense {
+  border-color: #a04545;
+  color: #b80000;
+  color: #d70000;
+
+  box-sizing: border-box;
+}
+.expense-amount,
+.income-amount {
+  font-weight: 600;
+}
