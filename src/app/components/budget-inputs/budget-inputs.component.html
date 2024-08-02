@@ -12,7 +12,7 @@
         [class]="intervalInputError() ? 'error-input' : ''"
       />
       @if(intervalInputError()){
-      <p class="error">value must be bigger than 10000ms</p>
+      <p class="error">value must be at least 10000ms</p>
       }
     </div>
 
