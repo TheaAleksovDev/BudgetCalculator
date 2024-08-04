@@ -4,7 +4,9 @@
     <div class="transaction income" [appHighlightByAmount]="income.amount">
       <div>
         <p class="income-amount">
-          +{{ income.amount | convert : income.currency : currency() }}
+          +{{
+            income.amount | convert : income.currency : currency() : rates()
+          }}
           {{ currency() }}
         </p>
         <p>{{ income.description }}</p>
@@ -23,7 +25,9 @@
     >
       <div>
         <p class="expense-amount">
-          {{ expense.amount | convert : expense.currency : currency() }}
+          {{
+            expense.amount | convert : expense.currency : currency() : rates()
+          }}
           {{ currency() }}
         </p>
         <p>{{ expense.description }}</p>

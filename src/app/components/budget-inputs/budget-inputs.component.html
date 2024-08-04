@@ -1,8 +1,39 @@
+<div class="fetching-time" *appShowByRole="role()">
+  <h4>update interval for rates (in milliseconds):</h4>
+  <div>
+    <div class="interval-input-container">
+      <input
+        type="number"
+        placeholder="enter time"
+        value="30000"
+        #intervalInput
+        [(ngModel)]="ratesInterval"
+        [disabled]="intervalInputEnabled() ? false : true"
+        [class]="intervalInputError() ? 'error-input' : ''"
+      />
+      @if(intervalInputError()){
+      <p class="error">value must be at least 10000ms</p>
+      }
+    </div>
+
+    <button
+      (click)="onChangeIntervalClick()"
+      [class]="intervalInputEnabled() ? 'save-button' : 'change-button'"
+    >
+      {{ intervalInputEnabled() ? "save" : "change" }}
+    </button>
+  </div>
+</div>
+
 <h2 class="balance">
   balance:
-  {{ (balance().amount | convert : balance().currency : currency()) || "0" }}
+  {{
+    (rates() && balance().amount
+      | convert : balance().currency : currency() : rates()) || "0"
+  }}
   {{ currency() }}
 </h2>
+
 <p class="info" *appShowByRole="role()">
   *Balance might vary due to the currency exchange rate and mixed values*
 </p>

@@ -1,4 +1,4 @@
-import { InjectionToken, Provider, computed } from '@angular/core';
+import { InjectionToken, Provider } from '@angular/core';
 
 export type Currency = 'USD' | 'BGN';
 
@@ -8,6 +8,8 @@ export interface Balance {
   amount: number;
   currency: Currency;
 }
+
+export type Rate = number | null;
 
 export interface Transaction {
   amount: number;
