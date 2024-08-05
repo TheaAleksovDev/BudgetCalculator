@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { SettingsService } from './settings.service';
 import {
   CURRENCIES_LIST,
@@ -6,11 +6,12 @@ import {
   Currency,
   Role,
 } from '../models/budget-calculator.model';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [],
+  imports: [MatTooltipModule],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.css',
 })

@@ -4,17 +4,24 @@
     (click)="setCurrency(element.currency)"
     [class.selected]="currency() === element.currency"
     [disabled]="!element.isAvailable && true"
+    [matTooltipDisabled]="element.isAvailable"
+    matTooltip="Currency not available"
+    matTooltipPosition="above"
   >
     {{ element.currency.toUpperCase() }} {{ element.isAvailable ? "" : "X" }}
   </button>
   }
 </div>
+
 <div class="choose">
   @for(element of allRoles; track element.role){
   <button
     (click)="setRole(element.role)"
     [class.selected]="role() === element.role"
     [disabled]="!element.isAvailable && true"
+    [matTooltipDisabled]="element.isAvailable"
+    matTooltip="You don't have this permission"
+    matTooltipPosition="above"
   >
     {{ element.role.toUpperCase() }} {{ element.isAvailable ? "" : "X" }}
   </button>
