@@ -65,11 +65,9 @@ export class BudgetInputsComponent implements OnInit, OnDestroy {
   onChangeIntervalClick() {
     const timeValue = this.ratesInterval();
     if (timeValue && timeValue < 10000) {
-      this.intervalInputError.set(true);
       return;
     }
 
-    this.intervalInputError.set(false);
     if (timeValue !== null) {
       this.conversionRatesService.updateInterval(timeValue);
     }
@@ -87,6 +85,12 @@ export class BudgetInputsComponent implements OnInit, OnDestroy {
       () => {
         this.balance.set(this.balanceService.getBalance());
         this.currency.set(this.settingsService.getSelectedCurrency());
+        const interval = this.ratesInterval();
+        if (interval !== null && interval >= 10000) {
+          this.intervalInputError.set(false);
+        } else {
+          this.intervalInputError.set(true);
+        }
       },
       { allowSignalWrites: true }
     );
